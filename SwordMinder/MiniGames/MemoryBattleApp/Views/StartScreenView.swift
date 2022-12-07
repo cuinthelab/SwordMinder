@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-
+// modify gameview appiconviews and sampleappviews
+// currentapp = .swordminder
+//swordminder viewmodel passed to my view
 
 struct StartScreenView: View {
+    //    @ObservedObject var memoryBattle: MemoryBattleViewModel
+    //    @EnvironmentObject var swordMinder: SwordMinder
+    //    @Binding var currentApp: Apps
+    
+    
+    
     // gameStatus will be used to store if the user has died to display a game over message.
     // Depending on time, I may add a game over/ win screen later
     private var gameOver: Bool?
