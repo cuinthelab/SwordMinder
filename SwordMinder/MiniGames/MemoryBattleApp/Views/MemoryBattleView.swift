@@ -8,18 +8,25 @@
 import SwiftUI
 
 struct MemoryBattleView: View {
-//    @ObservedObject var memoryBattle: MemoryBattleViewModel
-//    @EnvironmentObject var swordMinder: SwordMinder
-//    @Binding var currentApp: Apps
+    @ObservedObject var memoryBattle: MemoryBattleViewModel
+    @EnvironmentObject var swordMinder: SwordMinder
+    @Binding var currentApp: Apps
     
     
     
-    private var player: String?
-    @State private var timeRemaining = 120
+    //var player: String?
+    @State var timeRemaining = 120
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    private var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
-    private var sampleReference: String = "Acts 16:31"
+    var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
+    var sampleReference: String = "Acts 16:31"
+    
+//    private var player: String?
+//    @State private var timeRemaining = 120
+//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+//
+//    private var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
+//    private var sampleReference: String = "Acts 16:31"
     
     var body: some View {
             VStack {
@@ -167,10 +174,10 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView()
+        MemoryBattleView(memoryBattle: MemoryBattleViewModel(), currentApp: .constant(.memoryBattleApp))
+            .environmentObject(SwordMinder())
     }
 }
 
 
-//memoryBattle: MemoryBattle(), currentApp: .constant(.memoryBattleApp))
-//    .environmentObject(SwordMinder()
+

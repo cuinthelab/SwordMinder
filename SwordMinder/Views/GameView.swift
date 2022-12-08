@@ -19,9 +19,9 @@ struct GameView: View {
                             currentApp = .wordSearchApp
                         }
                     }
-                    SampleAppIconView {
+                    MemoryBattleAppIconView {
                         withAnimation {
-                            currentApp = .sampleApp
+                            currentApp = .memoryBattleApp
                         }
                     }
                 }

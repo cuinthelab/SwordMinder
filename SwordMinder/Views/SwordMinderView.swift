@@ -11,6 +11,7 @@ enum Apps {
     case swordMinder
     case sampleApp
     case wordSearchApp
+    case memoryBattleApp
 }
 
 
@@ -24,6 +25,7 @@ struct SwordMinderView: View {
             case .swordMinder: swordMinderMainView
             case .sampleApp: SampleAppView(currentApp: $currentApp)
             case .wordSearchApp: WordSearchView(wordSearch: WordSearch(), currentApp: $currentApp)
+            case .memoryBattleApp: MemoryBattleView(memoryBattle: MemoryBattleViewModel(), currentApp: $currentApp)
         }
     }
 
