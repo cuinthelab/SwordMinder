@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MemoryBattleView: View {
-    @ObservedObject var memoryBattle: MemoryBattleViewModel
+    //@ObservedObject var memoryBattle: MemoryBattleViewModel
     @EnvironmentObject var swordMinder: SwordMinder
-    @Binding var currentApp: Apps
     
     
     
@@ -30,6 +29,7 @@ struct MemoryBattleView: View {
     
     var body: some View {
             VStack {
+                Spacer()
                 title
                 Spacer()
                 gameBody
@@ -174,8 +174,7 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView(memoryBattle: MemoryBattleViewModel(), currentApp: .constant(.memoryBattleApp))
-            .environmentObject(SwordMinder())
+        MemoryBattleView()
     }
 }
 

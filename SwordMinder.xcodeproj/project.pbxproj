@@ -66,8 +66,8 @@
 		65EB9D7F287B9D4E00FAF612 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB9D7E287B9D4E00FAF612 /* GameView.swift */; };
 		65EB9D81287B9E5600FAF612 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB9D80287B9E5600FAF612 /* SettingsView.swift */; };
 		6B84C5E22941016000676A86 /* MemoryBattleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E12941016000676A86 /* MemoryBattleView.swift */; };
-		6B84C5E42941017200676A86 /* StartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E32941017100676A86 /* StartScreenView.swift */; };
-		6B84C5E62941018C00676A86 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E52941018C00676A86 /* InstructionsView.swift */; };
+		6B84C5E42941017200676A86 /* MemoryBattleStartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E32941017100676A86 /* MemoryBattleStartScreenView.swift */; };
+		6B84C5E62941018C00676A86 /* MemoryBattleInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E52941018C00676A86 /* MemoryBattleInstructionsView.swift */; };
 		6B84C5E8294103AC00676A86 /* MemoryBattleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E7294103AC00676A86 /* MemoryBattleModel.swift */; };
 		6B84C5EA294103BC00676A86 /* MemoryBattleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B84C5E9294103BC00676A86 /* MemoryBattleViewModel.swift */; };
 		6BC21DD6294176E400A8AA08 /* MemoryBattleAppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC21DD5294176E400A8AA08 /* MemoryBattleAppIconView.swift */; };
@@ -153,8 +153,8 @@
 		65EB9D7E287B9D4E00FAF612 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		65EB9D80287B9E5600FAF612 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6B84C5E12941016000676A86 /* MemoryBattleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleView.swift; sourceTree = "<group>"; };
-		6B84C5E32941017100676A86 /* StartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenView.swift; sourceTree = "<group>"; };
-		6B84C5E52941018C00676A86 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
+		6B84C5E32941017100676A86 /* MemoryBattleStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleStartScreenView.swift; sourceTree = "<group>"; };
+		6B84C5E52941018C00676A86 /* MemoryBattleInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleInstructionsView.swift; sourceTree = "<group>"; };
 		6B84C5E7294103AC00676A86 /* MemoryBattleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleModel.swift; sourceTree = "<group>"; };
 		6B84C5E9294103BC00676A86 /* MemoryBattleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleViewModel.swift; sourceTree = "<group>"; };
 		6BC21DD5294176E400A8AA08 /* MemoryBattleAppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBattleAppIconView.swift; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				6B84C5E12941016000676A86 /* MemoryBattleView.swift */,
-				6B84C5E32941017100676A86 /* StartScreenView.swift */,
-				6B84C5E52941018C00676A86 /* InstructionsView.swift */,
+				6B84C5E32941017100676A86 /* MemoryBattleStartScreenView.swift */,
+				6B84C5E52941018C00676A86 /* MemoryBattleInstructionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,7 +578,7 @@
 				65C7C812293BE26500301285 /* WordSearchView.swift in Sources */,
 				650BD00E28E52441007034EA /* SMButtonView.swift in Sources */,
 				6506B2422901D682003FA77C /* SMGaugeView.swift in Sources */,
-				6B84C5E42941017200676A86 /* StartScreenView.swift in Sources */,
+				6B84C5E42941017200676A86 /* MemoryBattleStartScreenView.swift in Sources */,
 				65A5D55D2906D340001584F2 /* FlashCardify.swift in Sources */,
 				65A5D54F2902EBFE001584F2 /* GemView.swift in Sources */,
 				65C7C7EE2939482600301285 /* PassagePickerView.swift in Sources */,
@@ -594,7 +594,7 @@
 				65CB7EF2292D5C2500809F7B /* URL+Extensions.swift in Sources */,
 				65C7C80A293BDCA100301285 /* PlacementType.swift in Sources */,
 				6504DC7228F3352600D8D5B4 /* Date+Extensions.swift in Sources */,
-				6B84C5E62941018C00676A86 /* InstructionsView.swift in Sources */,
+				6B84C5E62941018C00676A86 /* MemoryBattleInstructionsView.swift in Sources */,
 				6BC21DD6294176E400A8AA08 /* MemoryBattleAppIconView.swift in Sources */,
 				650BD13B28F24BED007034EA /* Player.swift in Sources */,
 				6B84C5E22941016000676A86 /* MemoryBattleView.swift in Sources */,

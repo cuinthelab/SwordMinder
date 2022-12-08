@@ -7,20 +7,16 @@
 
 import SwiftUI
 
-// modify gameview appiconviews and sampleappviews
-// currentapp = .swordminder
-//swordminder viewmodel passed to my view
-
-struct StartScreenView: View {
-    //    @ObservedObject var memoryBattle: MemoryBattleViewModel
-    //    @EnvironmentObject var swordMinder: SwordMinder
-    //    @Binding var currentApp: Apps
+struct MemoryBattleStartScreenView: View {
+        @ObservedObject var memoryBattle: MemoryBattleViewModel
+        @EnvironmentObject var swordMinder: SwordMinder
+        @Binding var currentApp: Apps
     
     
     
     // gameStatus will be used to store if the user has died to display a game over message.
     // Depending on time, I may add a game over/ win screen later
-    private var gameOver: Bool?
+    var gameOver: Bool?
     
     
     var body: some View {
@@ -55,7 +51,7 @@ struct StartScreenView: View {
     var mainScreen: some View {
         HStack{
             Button(action: {
-                //currentApp = .swordMinder
+                currentApp = .swordMinder
             }, label:{
                 VStack {
                     Image(systemName: "arrowshape.left.fill").foregroundColor(Color.black).font(.largeTitle)
@@ -70,8 +66,9 @@ struct StartScreenView: View {
     
     var instructions: some View {
         HStack{
+
             Button(action: {
-                // This will bring up the instructions
+                //MemoryBattleInstructionsView()
             }, label:{
                 VStack {
                     Image(systemName: "info.circle").foregroundColor(Color.black).font(.largeTitle)
@@ -99,8 +96,9 @@ struct StartScreenView: View {
 
 
 
-struct StartScreenView_Previews: PreviewProvider {
+struct MemoryBattleStartScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        StartScreenView()
+        MemoryBattleStartScreenView(memoryBattle: MemoryBattleViewModel(), currentApp: .constant(.memoryBattleApp))
+            .environmentObject(SwordMinder())
     }
 }

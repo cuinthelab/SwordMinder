@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct InstructionsView: View {
+struct MemoryBattleInstructionsView: View {
     var body: some View {
         VStack{
+            Spacer()
             Text("Instructions").font(.system(size: 60)).padding()
             Text("You goal is to defeat the enemies! You have a set amount of time to memorize the verse that appears. Press Attack when ready, and the verse will reappear with some words blanked out. You must enter in the correct words to attack the enemy.")
                 .multilineTextAlignment(.center)
@@ -22,7 +23,9 @@ struct InstructionsView: View {
                 back
                 Spacer()
             }
-        }.padding().frame(width: 400, height: 600).background(.gray)
+        }.padding().background(.gray)            .ignoresSafeArea(edges: [.top, .leading, .trailing])
+        
+        //.frame(width: 400, height: 600)
         
     }
     
@@ -43,8 +46,8 @@ struct InstructionsView: View {
     }
 }
 
-struct Instructions_Previews: PreviewProvider {
+struct MemoryBattleInstructions_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionsView()
+        MemoryBattleInstructionsView()
     }
 }
