@@ -20,28 +20,29 @@ struct MemoryBattleStartScreenView: View {
     
     
     var body: some View {
-        ZStack{
-            Text("🌲").font(.system(size: 400))
-        VStack {
-            title
-            if gameOver == true{
-                Text("Game Over").font(.system(size: 60)).foregroundColor(Color.red)
-            } else if gameOver == false{
-                Text("You Win!").font(.system(size: 60)).foregroundColor(Color.green)
-            }
-            Spacer()
-
-            start
-            
-            HStack{
-                mainScreen
-                Spacer()
-                instructions
-            }
+        NavigationView{
+            ZStack{
+                Text("🌲").font(.system(size: 400))
+                VStack {
+                    title
+                    if gameOver == true{
+                        Text("Game Over").font(.system(size: 60)).foregroundColor(Color.red)
+                    } else if gameOver == false{
+                        Text("You Win!").font(.system(size: 60)).foregroundColor(Color.green)
+                    }
+                    Spacer()
+                    
+                    start
+                    
+                    HStack{
+                        mainScreen
+                        Spacer()
+                        instructions
+                    }
+                }
+            }.background(.gray)
         }
-    }.background(.gray)
     }
-    
     var title: some View{
             VStack{
                 Text("Memory Battle").font(.system(size: 60)).multilineTextAlignment(.center)
@@ -65,31 +66,25 @@ struct MemoryBattleStartScreenView: View {
     }
     
     var instructions: some View {
-        HStack{
-
-            Button(action: {
-                //MemoryBattleInstructionsView()
-            }, label:{
-                VStack {
-                    Image(systemName: "info.circle").foregroundColor(Color.black).font(.largeTitle)
-                    Text("Instructions")
-                        .font(.footnote)
-                        .foregroundColor(Color.black)
-                }.padding(.horizontal)
-            })
-        }
+        
+        NavigationLink(destination: MemoryBattleInstructionsView()) {
+            VStack {
+                Image(systemName: "info.circle").foregroundColor(Color.black).font(.largeTitle)
+                Text("Instructions")
+                    .font(.footnote)
+                    .foregroundColor(Color.black)
+            }.padding(.horizontal)
+                }
     }
     
     var start: some View {
-        HStack{
-            Button(action: {
-                //MemoryBattleView()
-            }, label:{
-                
-                    Text("Start the Battle!")
-                        .font(.system(size: 40))
-            })
-        }
+        NavigationLink(destination: MemoryBattleView()) {
+            VStack {
+                Text("Start the Battle!")
+                    .font(.system(size: 40))
+                    .foregroundColor(Color.black)
+            }.padding()
+                }
     }
     
 }

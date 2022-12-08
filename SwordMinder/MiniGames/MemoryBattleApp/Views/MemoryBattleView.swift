@@ -37,7 +37,6 @@ struct MemoryBattleView: View {
                 verseBody
                 
                 HStack{
-                    returnButton
                     Spacer()
                     time
                 }
@@ -109,20 +108,6 @@ struct MemoryBattleView: View {
                 }.background(.red)
             }
         }.frame(width: PageConstants.verseWidth, height: PageConstants.verseHeight).background(.green)
-    }
-    
-    var returnButton: some View{
-        HStack{
-            Button(action: {
-                // This will be the action to go back to the main screen
-            }, label:{
-                VStack {
-                    Image(systemName: "arrowshape.left.fill").foregroundColor(Color.black).font(.largeTitle)
-                    Text("Home")
-                        .foregroundColor(Color.black)
-                }.padding(.horizontal)
-            })
-        }
     }
     
     var potions: some View{
