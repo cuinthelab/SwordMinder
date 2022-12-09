@@ -10,7 +10,7 @@ import SwiftUI
 struct MemoryBattleView: View {
     //@ObservedObject var memoryBattle: MemoryBattleViewModel
     @EnvironmentObject var swordMinder: SwordMinder
-    
+    var passage: Passage
     
     
     //var player: String?
@@ -20,35 +20,36 @@ struct MemoryBattleView: View {
     var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
     var sampleReference: String = "Acts 16:31"
     
-//    private var player: String?
-//    @State private var timeRemaining = 120
-//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-//
-//    private var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
-//    private var sampleReference: String = "Acts 16:31"
+    //    private var player: String?
+    //    @State private var timeRemaining = 120
+    //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    //
+    //    private var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
+    //    private var sampleReference: String = "Acts 16:31"
     
     var body: some View {
-            VStack {
+        VStack {
+            Spacer()
+            title
+            Spacer()
+            gameBody
+            
+            verseBody
+            
+            HStack{
                 Spacer()
-                title
-                Spacer()
-                gameBody
-                
-                verseBody
-                
-                HStack{
-                    Spacer()
-                    time
-                }
-            }.background(.gray)
+                time
+            }
+        }.background(.gray)
             .ignoresSafeArea(edges: [.top, .leading, .trailing])
+        //MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
     }
     
     
     var title: some View{
-            VStack{
-                Text("Memory Battle").font(.system(size: PageConstants.titleFont)).multilineTextAlignment(.center)
-            }.padding()
+        VStack{
+            Text("Memory Battle").font(.system(size: PageConstants.titleFont)).multilineTextAlignment(.center)
+        }.padding()
     }
     
     var gameBody: some View{
@@ -89,32 +90,43 @@ struct MemoryBattleView: View {
     
     var verseBody: some View{
         ZStack{
-            VStack{
-                VStack{
-                    Text(sampleReference).padding()
-                    
-                    Text(sampleVerse)
-                        .multilineTextAlignment(.center).padding()
-                }
-                ZStack{
-                    Button(action: {
-                        // This will be make the card dissapear and reappear with blanks missing from the verse after a couple seconds
-                    }, label:{
-                        Text("ATTACK!")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.black)
-                    })
-                }.background(.red)
-            }
+            verse
+            //            VStack{
+            //                VStack{
+            //                    Text(sampleReference).padding()
+            //
+            //                    Text(sampleVerse)
+            //                        .multilineTextAlignment(.center).padding()
+            //                }
+            //                ZStack{
+            //                    Button(action: {
+            //                        // This will be make the card dissapear and reappear with blanks missing from the verse after a couple seconds
+            //                    }, label:{
+            //                        Text("ATTACK!")
+            //                            .font(.headline)
+            //                            .fontWeight(.bold)
+            //                            .foregroundColor(Color.black)
+            //                    })
+            //                }.background(.red)
+            //            }
         }.frame(width: PageConstants.verseWidth, height: PageConstants.verseHeight).background(.green)
     }
+    
+    var verse: some View{
+        VStack{
+            Text((passage.referenceFormatted))
+//            Text(swordMinder.bible.words(for: passage))
+        }
+    }
+    
+//    MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
+    
     
     var potions: some View{
         VStack{
             HStack{
                 Text("Potions")
-                    .foregroundColor(Color.black)
+                    .foregroundColor(Color.black).padding(.horizontal)
                 Spacer()
             }
             HStack{
@@ -159,7 +171,7 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView()
+        MemoryBattleView(passage: Passage())
     }
 }
 

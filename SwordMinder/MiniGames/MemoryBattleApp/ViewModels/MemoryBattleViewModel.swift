@@ -8,5 +8,7 @@
 import Foundation
 
 class MemoryBattleViewModel: ObservableObject {
+    var words = [Word]()
+    
     
 }

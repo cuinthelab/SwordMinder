@@ -78,7 +78,7 @@ struct MemoryBattleStartScreenView: View {
     }
     
     var start: some View {
-        NavigationLink(destination: MemoryBattleView()) {
+        NavigationLink(destination: MemoryBattleView(passage: Passage())) {
             VStack {
                 Text("Start the Battle!")
                     .font(.system(size: 40))
