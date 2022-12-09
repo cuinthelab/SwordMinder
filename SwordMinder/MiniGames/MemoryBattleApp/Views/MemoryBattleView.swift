@@ -5,6 +5,10 @@
 //  Created by Braden Nunley on 11/14/22.
 //
 
+
+//swordminder.bible.wordsfor
+//
+
 import SwiftUI
 
 struct MemoryBattleView: View {
