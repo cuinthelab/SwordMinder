@@ -27,9 +27,6 @@ struct MemoryBattleView: View {
     //    private var player: String?
     //    @State private var timeRemaining = 120
     //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    //
-    //    private var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
-    //    private var sampleReference: String = "Acts 16:31"
     
     var body: some View {
         VStack {
