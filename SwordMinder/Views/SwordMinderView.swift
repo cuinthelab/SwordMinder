@@ -25,7 +25,7 @@ struct SwordMinderView: View {
             case .swordMinder: swordMinderMainView
             case .sampleApp: SampleAppView(currentApp: $currentApp)
             case .wordSearchApp: WordSearchView(wordSearch: WordSearch(), currentApp: $currentApp)
-            case .memoryBattleApp: MemoryBattleStartScreenView(memoryBattle: MemoryBattleViewModel(), currentApp: $currentApp)
+            case .memoryBattleApp: MemoryBattleStartScreenView(memoryBattle: MemoryBattleViewModel(model: VerseText()), currentApp: $currentApp)
         }
     }
 

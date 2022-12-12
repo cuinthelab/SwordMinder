@@ -20,7 +20,11 @@ class MemoryBattleViewModel: ObservableObject {
     }
     
     func updateGameState() {
-        
+        if gameState == .fullText{
+            gameState = .missingWords
+        } else {
+            gameState = .fullText
+        }
     }
     
     func playerHealth(userUnput: String) {

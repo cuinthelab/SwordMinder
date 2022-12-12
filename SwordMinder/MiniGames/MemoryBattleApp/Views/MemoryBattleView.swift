@@ -114,37 +114,62 @@ struct MemoryBattleView: View {
     
     @ViewBuilder
     var verse: some View{
-       
-        
-        if memoryBattle.gameState == .fullText {
-            Text(memoryBattle.model.fullVerse)
-        } else {
-            Text(memoryBattle.model.textWithBlanks)
-        }
-        
-        // Button to reveal words
-        Button(action: {
-            self.memoryBattle.updateGameState()
-            
-        }) {
-        Text("Show Missing Words")
-    }
-        
-        // text field
-        TextField("Enter in the missing words", text: $userInput)
-        
-        // Button to submit answers
-        Button(action: {
-            self.memoryBattle.playerHealth(userInput: self.userInput)
-        }) {
-               Text("Submit Answers")
-        }
-               
-        
-        
         VStack{
             Text((passage.referenceFormatted))
-//            Text(swordMinder.bible.words(for: passage))
+            Spacer()
+            
+            
+            if memoryBattle.gameState == .fullText {
+                Text(memoryBattle.model.fullVerse)
+                Spacer()
+                // Button to reveal words
+                Button(action: {
+                    self.memoryBattle.updateGameState()
+                    
+                }) {
+                    Text("Show Missing Words")
+                        .foregroundColor(Color.black)
+                }
+            } else {
+                Text(memoryBattle.model.textWithBlanks)
+                
+                Spacer()
+                // text field
+                TextField("Enter in the missing words", text: $userInput).background(.white)
+                    .padding()
+                
+                // Button to submit answers
+                Button(action: {
+                    //self.memoryBattle.playerHealth(userInput: self.userInput)
+                }) {
+                    Text("Submit Answers")
+                }
+            }
+            
+            //        // Button to reveal words
+            //        Button(action: {
+            //            self.memoryBattle.updateGameState()
+            //
+            //        }) {
+            //        Text("Show Missing Words")
+            //    }
+            
+            //        // text field
+            //        TextField("Enter in the missing words", text: $userInput)
+            //
+            //        // Button to submit answers
+            //        Button(action: {
+            //            //self.memoryBattle.playerHealth(userInput: self.userInput)
+            //        }) {
+            //               Text("Submit Answers")
+            //        }
+            
+            
+            
+//            VStack{
+//                Text((passage.referenceFormatted))
+//                //            Text(swordMinder.bible.words(for: passage))
+//            }
         }
     }
     
@@ -200,7 +225,7 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView(memoryBattle: <#MemoryBattleViewModel#>, passage: Passage())
+        MemoryBattleView(memoryBattle: MemoryBattleViewModel(model: VerseText()), passage: Passage())
     }
 }
 
