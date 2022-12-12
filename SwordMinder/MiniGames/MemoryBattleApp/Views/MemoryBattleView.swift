@@ -12,8 +12,10 @@
 import SwiftUI
 
 struct MemoryBattleView: View {
-    //@ObservedObject var memoryBattle: MemoryBattleViewModel
+    @ObservedObject var memoryBattle: MemoryBattleViewModel
     @EnvironmentObject var swordMinder: SwordMinder
+    @State private var userInput: String = ""
+    
     var passage: Passage
     
     
@@ -24,9 +26,6 @@ struct MemoryBattleView: View {
     var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
     var sampleReference: String = "Acts 16:31"
     
-    //    private var player: String?
-    //    @State private var timeRemaining = 120
-    //    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -84,7 +83,7 @@ struct MemoryBattleView: View {
                         Text("🐓").font(.system(size: 80))
                     }
                 }
-                potions
+                //potions
             }.padding()
         }.frame(width: PageConstants.gameBodyWidth, height: PageConstants.gameBodyHeight).background(.cyan)
     }
@@ -113,7 +112,36 @@ struct MemoryBattleView: View {
         }.frame(width: PageConstants.verseWidth, height: PageConstants.verseHeight).background(.green)
     }
     
+    @ViewBuilder
     var verse: some View{
+       
+        
+        if memoryBattle.gameState == .fullText {
+            Text(memoryBattle.model.fullVerse)
+        } else {
+            Text(memoryBattle.model.textWithBlanks)
+        }
+        
+        // Button to reveal words
+        Button(action: {
+            self.memoryBattle.updateGameState()
+            
+        }) {
+        Text("Show Missing Words")
+    }
+        
+        // text field
+        TextField("Enter in the missing words", text: $userInput)
+        
+        // Button to submit answers
+        Button(action: {
+            self.memoryBattle.playerHealth(userInput: self.userInput)
+        }) {
+               Text("Submit Answers")
+        }
+               
+        
+        
         VStack{
             Text((passage.referenceFormatted))
 //            Text(swordMinder.bible.words(for: passage))
@@ -172,7 +200,7 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView(passage: Passage())
+        MemoryBattleView(memoryBattle: <#MemoryBattleViewModel#>, passage: Passage())
     }
 }
 

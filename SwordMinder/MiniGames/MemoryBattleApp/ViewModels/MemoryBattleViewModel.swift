@@ -7,8 +7,26 @@
 
 import Foundation
 
+
 class MemoryBattleViewModel: ObservableObject {
-    var words = [Word]()
+    var model: VerseText
+    var gameState: GameState
+    var playerHealth: Int
     
+    init(model: VerseText) {
+        self.model = model
+        self.gameState = .fullText
+        self.playerHealth = 30
+    }
+    
+    func updateGameState() {
+        
+    }
+    
+    func playerHealth(userUnput: String) {
+        
+    }
+ 
     
 }
+
