@@ -9,11 +9,11 @@ import Foundation
 
 
 class MemoryBattleViewModel: ObservableObject {
-    var model: VerseText
+    var model: MemoryBattleModel
     var gameState: GameState
     var playerHealth: Int
     
-    init(model: VerseText) {
+    init(model: MemoryBattleModel) {
         self.model = model
         self.gameState = .fullText
         self.playerHealth = 30
@@ -22,12 +22,13 @@ class MemoryBattleViewModel: ObservableObject {
     func updateGameState() {
         if gameState == .fullText{
             gameState = .missingWords
+            model.blankedOutWords()
         } else {
             gameState = .fullText
         }
     }
     
-    func playerHealth(userUnput: String) {
+    func playerHealth(userInput: String) {
         
     }
  

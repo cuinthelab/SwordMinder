@@ -78,7 +78,7 @@ struct MemoryBattleStartScreenView: View {
     }
     
     var start: some View {
-        NavigationLink(destination: MemoryBattleView(memoryBattle: MemoryBattleViewModel(model: VerseText()), passage: Passage())) {
+        NavigationLink(destination: MemoryBattleView(memoryBattle: MemoryBattleViewModel(model: MemoryBattleModel()), passage: Passage())) {
             VStack {
                 Text("Start the Battle!")
                     .font(.system(size: 40))
@@ -93,7 +93,7 @@ struct MemoryBattleStartScreenView: View {
 
 struct MemoryBattleStartScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleStartScreenView(memoryBattle: MemoryBattleViewModel(model: VerseText()), currentApp: .constant(.memoryBattleApp))
+        MemoryBattleStartScreenView(memoryBattle: MemoryBattleViewModel(model: MemoryBattleModel()), currentApp: .constant(.memoryBattleApp))
             .environmentObject(SwordMinder())
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct VerseText {
+struct MemoryBattleModel {
     var fullVerse: String
     @State var textWithBlanks: String = ""
     
@@ -18,8 +18,7 @@ struct VerseText {
     }
     
     func blankedOutWords() {
-        
-        
+
         //This will blank out words
         let words = fullVerse.components(separatedBy: " ")
         var blankedOutWords = words
@@ -30,15 +29,15 @@ struct VerseText {
         
         //Blank out the words
         for index in indices {
-            blankedOutWords[index] = "__"
+            blankedOutWords[index] = "___"
         }
         
         //add
-        textWithBlanks = ""
+        //textWithBlanks = ""
         for word in blankedOutWords {
             textWithBlanks += word + " "
         }
-        textWithBlanks.removeLast()
+        //textWithBlanks.removeLast()
     }
     
 }

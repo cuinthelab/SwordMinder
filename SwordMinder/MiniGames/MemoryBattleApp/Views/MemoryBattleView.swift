@@ -40,7 +40,7 @@ struct MemoryBattleView: View {
                 Spacer()
                 time
             }
-        }.background(.gray)
+        }.background(PageConstants.backgroundColor)
             .ignoresSafeArea(edges: [.top, .leading, .trailing])
         //MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
     }
@@ -85,53 +85,36 @@ struct MemoryBattleView: View {
                 }
                 //potions
             }.padding()
-        }.frame(width: PageConstants.gameBodyWidth, height: PageConstants.gameBodyHeight).background(.cyan)
+        }.frame(width: PageConstants.gameBodyWidth, height: PageConstants.gameBodyHeight).background(PageConstants.gameBodyColor)
     }
     
     var verseBody: some View{
         ZStack{
             verse
-            //            VStack{
-            //                VStack{
-            //                    Text(sampleReference).padding()
-            //
-            //                    Text(sampleVerse)
-            //                        .multilineTextAlignment(.center).padding()
-            //                }
-            //                ZStack{
-            //                    Button(action: {
-            //                        // This will be make the card dissapear and reappear with blanks missing from the verse after a couple seconds
-            //                    }, label:{
-            //                        Text("ATTACK!")
-            //                            .font(.headline)
-            //                            .fontWeight(.bold)
-            //                            .foregroundColor(Color.black)
-            //                    })
-            //                }.background(.red)
-            //            }
-        }.frame(width: PageConstants.verseWidth, height: PageConstants.verseHeight).background(.green)
+
+        }.frame(width: PageConstants.verseWidth, height: PageConstants.verseHeight).background(PageConstants.verseBodyColor)
     }
     
     @ViewBuilder
     var verse: some View{
         VStack{
-            Text((passage.referenceFormatted))
+            Text((passage.referenceFormatted)).padding()
             Spacer()
             
             
             if memoryBattle.gameState == .fullText {
-                Text(memoryBattle.model.fullVerse)
+                Text(memoryBattle.model.fullVerse).padding(.horizontal)
                 Spacer()
-                // Button to reveal words
+                // Button to get rid of random words
                 Button(action: {
                     self.memoryBattle.updateGameState()
-                    
                 }) {
-                    Text("Show Missing Words")
+                    Text("Ready to Attack!")
                         .foregroundColor(Color.black)
                 }
             } else {
                 Text(memoryBattle.model.textWithBlanks)
+                    .foregroundColor(.black)
                 
                 Spacer()
                 // text field
@@ -140,31 +123,12 @@ struct MemoryBattleView: View {
                 
                 // Button to submit answers
                 Button(action: {
+                    self.memoryBattle.updateGameState()
                     //self.memoryBattle.playerHealth(userInput: self.userInput)
                 }) {
                     Text("Submit Answers")
                 }
             }
-            
-            //        // Button to reveal words
-            //        Button(action: {
-            //            self.memoryBattle.updateGameState()
-            //
-            //        }) {
-            //        Text("Show Missing Words")
-            //    }
-            
-            //        // text field
-            //        TextField("Enter in the missing words", text: $userInput)
-            //
-            //        // Button to submit answers
-            //        Button(action: {
-            //            //self.memoryBattle.playerHealth(userInput: self.userInput)
-            //        }) {
-            //               Text("Submit Answers")
-            //        }
-            
-            
             
 //            VStack{
 //                Text((passage.referenceFormatted))
@@ -218,6 +182,9 @@ struct MemoryBattleView: View {
         static let gameBodyWidth: CGFloat = 400
         static let gameBodyHeight: CGFloat = 400
         static let potionsHeight: CGFloat = 75
+        static let backgroundColor: Color = .gray
+        static let gameBodyColor: Color = .cyan
+        static let verseBodyColor: Color = .green
     }
     
 }
@@ -225,7 +192,7 @@ struct MemoryBattleView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoryBattleView(memoryBattle: MemoryBattleViewModel(model: VerseText()), passage: Passage())
+        MemoryBattleView(memoryBattle: MemoryBattleViewModel(model: MemoryBattleModel()), passage: Passage())
     }
 }
 
