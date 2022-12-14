@@ -10,11 +10,13 @@ import SwiftUI
 
 struct MemoryBattleModel {
     var fullVerse: String
+    var verseReference: String
     @State var textWithBlanks: String = ""
     
     init() {
         // This will be where the app gets a random verse
         fullVerse = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
+        verseReference = "Acts 16:31"
     }
     
     func blankedOutWords() {
