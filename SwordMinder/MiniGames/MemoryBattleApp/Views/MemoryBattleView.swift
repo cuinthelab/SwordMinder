@@ -26,6 +26,7 @@ struct MemoryBattleView: View {
     
     
     var body: some View {
+        
         VStack {
             Spacer()
             title
