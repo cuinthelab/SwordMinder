@@ -22,7 +22,7 @@ struct MemoryBattleStartScreenView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Text("🌲").font(.system(size: 400))
+                Text("🗡").font(.system(size: 350))
                 VStack {
                     title
                     if gameOver == true{
@@ -40,7 +40,7 @@ struct MemoryBattleStartScreenView: View {
                         instructions
                     }
                 }
-            }.background(.gray)
+            }.background(.blue)
         }
     }
     var title: some View{

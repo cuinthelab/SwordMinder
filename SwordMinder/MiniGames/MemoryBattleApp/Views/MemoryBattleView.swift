@@ -38,7 +38,7 @@ struct MemoryBattleView: View {
             
             HStack{
                 Spacer()
-                time
+                //time
             }
         }.background(PageConstants.backgroundColor)
             .ignoresSafeArea(edges: [.top, .leading, .trailing])
@@ -182,9 +182,9 @@ struct MemoryBattleView: View {
         static let gameBodyWidth: CGFloat = 400
         static let gameBodyHeight: CGFloat = 400
         static let potionsHeight: CGFloat = 75
-        static let backgroundColor: Color = .gray
-        static let gameBodyColor: Color = .cyan
-        static let verseBodyColor: Color = .green
+        static let backgroundColor: Color = .blue
+        static let gameBodyColor: Color = .brown
+        static let verseBodyColor: Color = .white
     }
     
 }
