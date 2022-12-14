@@ -21,7 +21,7 @@ struct MemoryBattleView: View {
     
     
     var player: String?
-    @State var timeRemaining = 1000
+    @State var timeRemaining = 120
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     
@@ -39,6 +39,7 @@ struct MemoryBattleView: View {
             HStack{
                 Spacer()
                 time
+                
             }
         }.background(PageConstants.backgroundColor)
             .ignoresSafeArea(edges: [.top, .leading, .trailing])
@@ -59,7 +60,7 @@ struct MemoryBattleView: View {
                     VStack{
                         Text("Health")
                             .font(.title2)
-                        Text("30")
+                        Text("30") //memoryBattle.model.playerHealth
                             .font(.title2)
                         Spacer()
                         
@@ -72,7 +73,7 @@ struct MemoryBattleView: View {
                     VStack{
                         Text("Health")
                             .font(.title2)
-                        Text("13")
+                        Text("13") //memoryBattle.model.enemyHealth
                             .font(.title2)
                         Spacer()
                         Text("🐓").font(.system(size: 80))
@@ -97,9 +98,13 @@ struct MemoryBattleView: View {
             Spacer()
             
             if memoryBattle.gameState == .fullText {
+                // When the timer ends, the verse automatically flips.
+//                if timeRemaining == 0 {
+//                    memoryBattle.updateGameState()
+//                }
                 Text(memoryBattle.model.fullVerse).padding(.horizontal)
                 Spacer()
-                // Button to get rid of random words
+                // Button to get rid of some words at random
                 Button(action: {
                     memoryBattle.updateGameState()
                 }) {
@@ -121,13 +126,12 @@ struct MemoryBattleView: View {
                     memoryBattle.updateGameState()
                     //Text(textWithBlanks)
                     memoryBattle.verseCheck(userInput: userInput)
+                    timeRemaining = 120
                 }) {
                     Text("Submit Answers")
                 }
             }
             
-
-//                Text(swordMinder.bible.words(for: passage))
         }
     }
     
@@ -142,6 +146,7 @@ struct MemoryBattleView: View {
             HStack{
                 Button("🧃") {
                     // This will be an item that might heal or buff the player in some way
+                    memoryBattle.model.playerHealth += 2
                 }.font(.system(size: 50))
                 
                 Button("🥛") {
