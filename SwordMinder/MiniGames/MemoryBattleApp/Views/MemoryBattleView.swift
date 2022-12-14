@@ -19,12 +19,9 @@ struct MemoryBattleView: View {
     var passage: Passage
     
     
-    //var player: String?
-    @State var timeRemaining = 120
+    var player: String?
+    @State var timeRemaining = 1000
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    var sampleVerse: String = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
-    var sampleReference: String = "Acts 16:31"
     
     
     var body: some View {
@@ -38,11 +35,10 @@ struct MemoryBattleView: View {
             
             HStack{
                 Spacer()
-                //time
+                time
             }
         }.background(PageConstants.backgroundColor)
             .ignoresSafeArea(edges: [.top, .leading, .trailing])
-        //MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
     }
     
     
@@ -60,7 +56,6 @@ struct MemoryBattleView: View {
                     VStack{
                         Text("Health")
                             .font(.title2)
-                        //This health will be handled by the model/viewmodel later
                         Text("30")
                             .font(.title2)
                         Spacer()
@@ -71,12 +66,9 @@ struct MemoryBattleView: View {
                     }
                     Spacer()
                     
-                    //The simulated first enemy
-                    //Since there will be multiple enemies, I will use the model/viewModel to have different enemies appear
                     VStack{
                         Text("Health")
                             .font(.title2)
-                        //This health will be handled by the model/viewmodel later
                         Text("13")
                             .font(.title2)
                         Spacer()
@@ -98,21 +90,20 @@ struct MemoryBattleView: View {
     @ViewBuilder
     var verse: some View{
         VStack{
-            Text((passage.referenceFormatted)).padding()
+            Text((memoryBattle.model.verseReference)).padding()
             Spacer()
-            
             
             if memoryBattle.gameState == .fullText {
                 Text(memoryBattle.model.fullVerse).padding(.horizontal)
                 Spacer()
                 // Button to get rid of random words
                 Button(action: {
-                    self.memoryBattle.updateGameState()
+                    memoryBattle.updateGameState()
                 }) {
                     Text("Ready to Attack!")
                         .foregroundColor(Color.black)
                 }
-            } else {
+            } else if memoryBattle.gameState == .missingWords {
                 Text(memoryBattle.model.textWithBlanks)
                     .foregroundColor(.black)
                 
@@ -123,23 +114,19 @@ struct MemoryBattleView: View {
                 
                 // Button to submit answers
                 Button(action: {
-                    self.memoryBattle.updateGameState()
-                    //self.memoryBattle.playerHealth(userInput: self.userInput)
+                    memoryBattle.updateGameState()
+                    memoryBattle.verseCheck(userInput: userInput)
                 }) {
                     Text("Submit Answers")
                 }
             }
             
-//            VStack{
-//                Text((passage.referenceFormatted))
-//                //            Text(swordMinder.bible.words(for: passage))
-//            }
+
+//                Text(swordMinder.bible.words(for: passage))
         }
     }
     
-//    MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
-    
-    
+    //Potions view not used
     var potions: some View{
         VStack{
             HStack{
@@ -163,8 +150,9 @@ struct MemoryBattleView: View {
         }.frame(width: PageConstants.verseWidth, height: PageConstants.potionsHeight).background(.brown)
     }
     
+//Timer view
     var time: some View{
-        // The timer will be updated in the model/viewmodel to work for the various actions needed
+
         VStack{
             Text("\(timeRemaining)")
                 .font(.title)
@@ -175,6 +163,7 @@ struct MemoryBattleView: View {
             Text("Seconds")
         }.padding()
     }
+    
     private struct PageConstants {
         static let titleFont: CGFloat = 40
         static let verseWidth: CGFloat = 400
@@ -183,7 +172,7 @@ struct MemoryBattleView: View {
         static let gameBodyHeight: CGFloat = 400
         static let potionsHeight: CGFloat = 75
         static let backgroundColor: Color = .blue
-        static let gameBodyColor: Color = .brown
+        static let gameBodyColor: Color = .green
         static let verseBodyColor: Color = .white
     }
     

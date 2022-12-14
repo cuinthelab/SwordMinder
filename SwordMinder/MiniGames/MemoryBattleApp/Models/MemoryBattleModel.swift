@@ -11,12 +11,19 @@ import SwiftUI
 struct MemoryBattleModel {
     var fullVerse: String
     var verseReference: String
+    var playerHealth: Int
+    var enemyHealth: Int
     @State var textWithBlanks: String = ""
     
     init() {
         // This will be where the app gets a random verse
         fullVerse = "and they said, \"Believe in the Lord Jesus, and you wil be saved, you and your household\""
         verseReference = "Acts 16:31"
+        
+        //MemoryBattleViewModel.words = swordMinder.bible.words(for: passage)
+        
+        self.playerHealth = 30
+        self.enemyHealth = 17
     }
     
     func blankedOutWords() {
@@ -35,11 +42,15 @@ struct MemoryBattleModel {
         }
         
         //add
-        //textWithBlanks = ""
+        textWithBlanks = ""
         for word in blankedOutWords {
             textWithBlanks += word + " "
         }
-        //textWithBlanks.removeLast()
+        textWithBlanks.removeLast()
+    }
+    
+    func checkEnteredWords() {
+        
     }
     
 }
