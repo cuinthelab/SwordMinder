@@ -32,6 +32,7 @@ struct MemoryBattleModel {
         let words = fullVerse.components(separatedBy: " ")
         var blankedOutWords = words
         let numWords = words.count / 3
+
         
         // Make random places to take out words
         let indices = Set(0..<words.count).shuffled().prefix(numWords)
@@ -41,12 +42,12 @@ struct MemoryBattleModel {
             blankedOutWords[index] = "___"
         }
         
-        //add
+        
         textWithBlanks = ""
         for word in blankedOutWords {
             textWithBlanks += word + " "
         }
-        textWithBlanks.removeLast()
+        //textWithBlanks.removeLast()
     }
     
     func checkEnteredWords() {

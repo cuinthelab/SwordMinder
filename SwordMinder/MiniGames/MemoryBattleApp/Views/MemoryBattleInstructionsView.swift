@@ -20,9 +20,7 @@ struct MemoryBattleInstructionsView: View {
                 .multilineTextAlignment(.center)
             Spacer()
 
-        }.padding().background(.gray)            .ignoresSafeArea(edges: [.top, .leading, .trailing])
-        
-        //.frame(width: 400, height: 600)
+        }.padding().background(.white)            .ignoresSafeArea(edges: [.top, .leading, .trailing])
         
     }
 }

@@ -15,6 +15,7 @@ struct MemoryBattleView: View {
     @ObservedObject var memoryBattle: MemoryBattleViewModel
     @EnvironmentObject var swordMinder: SwordMinder
     @State private var userInput: String = ""
+    @State private var textWithBlanks = ""
     
     var passage: Passage
     
@@ -28,6 +29,7 @@ struct MemoryBattleView: View {
         VStack {
             Spacer()
             title
+                .padding()
             Spacer()
             gameBody
             
@@ -102,6 +104,7 @@ struct MemoryBattleView: View {
                 }) {
                     Text("Ready to Attack!")
                         .foregroundColor(Color.black)
+                        .padding()
                 }
             } else if memoryBattle.gameState == .missingWords {
                 Text(memoryBattle.model.textWithBlanks)
@@ -115,6 +118,7 @@ struct MemoryBattleView: View {
                 // Button to submit answers
                 Button(action: {
                     memoryBattle.updateGameState()
+                    //Text(textWithBlanks)
                     memoryBattle.verseCheck(userInput: userInput)
                 }) {
                     Text("Submit Answers")
@@ -169,11 +173,11 @@ struct MemoryBattleView: View {
         static let verseWidth: CGFloat = 400
         static let verseHeight: CGFloat = 250
         static let gameBodyWidth: CGFloat = 400
-        static let gameBodyHeight: CGFloat = 400
+        static let gameBodyHeight: CGFloat = 350
         static let potionsHeight: CGFloat = 75
-        static let backgroundColor: Color = .blue
+        static let backgroundColor: Color = .white
         static let gameBodyColor: Color = .green
-        static let verseBodyColor: Color = .white
+        static let verseBodyColor: Color = .brown
     }
     
 }

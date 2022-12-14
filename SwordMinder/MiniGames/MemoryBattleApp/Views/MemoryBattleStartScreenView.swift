@@ -40,7 +40,7 @@ struct MemoryBattleStartScreenView: View {
                         instructions
                     }
                 }
-            }.background(.blue)
+            }.background(.white)
         }
     }
     var title: some View{

@@ -26,6 +26,7 @@ class MemoryBattleViewModel: ObservableObject {
         }
     }
     
+    
     func verseCheck(userInput: String) {
         model.checkEnteredWords()
     }
